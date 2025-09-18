@@ -1,0 +1,46 @@
+
+#Crear una ventana con dos botones y una etiqueta.
+#Cuando pulsen los botones, la etiqueta cambiará el texto.
+
+import sys
+from PySide6.QtWidgets import QApplication, QLabel, QPushButton, QWidget, QVBoxLayout
+
+# 1. Crea la aplicación (es obligatoria, solo puede haber una por programa)
+app = QApplication(sys.argv)
+
+# 2. Crear la ventana principal
+window = QWidget()
+window.setWindowTitle("Mi ventana con botón y etiqueta")
+window.setGeometry(100, 100, 300, 200)  # Posición (x, y) y tamaño (ancho, alto)
+
+# 3. Crear widgets
+label = QLabel("¡Hola! Pulsa un botón")
+button = QPushButton("OPCION 1")
+button2 = QPushButton("OPCION 2")
+
+# 4.Funciones que cambian el texto del label
+def cambiar_texto():
+    label.setText("¡Has pulsado la opcion 1!")
+def cambiar_texto2():
+    label.setText("¡Has pulsado la opcion 2!")
+
+# 5. Conectar el botón con la función
+button.clicked.connect(cambiar_texto)
+button2.clicked.connect(cambiar_texto2)
+
+
+# 6. Crear un layout (vertical)
+layout = QVBoxLayout()  # Organiza los widgets de arriba hacia abajo
+layout.addWidget(label)  # Primero la etiqueta
+layout.addWidget(button)  # Luego el botón
+layout.addWidget(button2)  # Luego el botón
+
+# 7. Aplicar el layout a la ventana
+window.setLayout(layout)
+
+# 8. Mostrar la ventana
+window.show()
+
+# 9. Mantiene l aplicacion abierta
+app.exec()
+
