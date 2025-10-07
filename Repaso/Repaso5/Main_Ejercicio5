@@ -1,0 +1,27 @@
+import sys
+
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QVBoxLayout
+from Ejercicio5 import Ui_MainWindow
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self) #Cargar lo que hiciste en la paleta
+
+
+        widget_central = QWidget()
+        layout = QVBoxLayout(widget_central)
+        layout.addStretch()
+        layout.addWidget(self.horizontalLayoutWidget)
+        layout.addStretch()
+
+        self.setCentralWidget(widget_central)
+
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    main = MainWindow()
+    main.show()
+    sys.exit(app.exec())
