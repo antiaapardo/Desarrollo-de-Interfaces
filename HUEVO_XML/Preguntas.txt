@@ -1,0 +1,20 @@
+Método antiguo pero aun presente - El huevo clásico en XML
+
+
+
+1. ¿Qué diferencias notas entre esta forma (XML + paleta + findViewById) y la que hicimos antes con Compose?
+
+
+En la forma del XML se separa la parte visual de la parte lógica, lo que implica tener varios archivos y tener que recordar los nombres de cada componente. En compose no, nos permite tener la parte lógica y visual en Kotlin  lo que nos permite ver y modificarlo juntas.
+
+
+
+
+2. ¿Qué te ha parecido más fácil de entender y modificar?
+
+
+Me ha parecido más fácil la de Compose ya que nos permite ver todo en un solo archivo y los cambios se realizan casi inmediatamente.
+
+
+3. ¿Cuál te parece más cómoda para proyectos grandes?
+Compose resulta más cómodo para proyectos grandes por su modularidad y menor riesgo de errores;
