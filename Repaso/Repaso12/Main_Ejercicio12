@@ -1,0 +1,28 @@
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow,QLabel
+from Ejercicio12 import Ui_MainWindow
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.actionMostrar_playlist.triggered.connect(self.mostrar_playlist)
+        self.actionOcultar_playlist.triggered.connect(self.ocultar_playlist)
+
+        self.menuVER.addAction(self.dockPlaylist.toggleViewAction())
+
+    def mostrar_playlist(self):
+        self.dockPlaylist.show()
+        self.statusbar.showMessage("Playlist mostrada", 2000)
+
+    def ocultar_playlist(self):
+        self.dockPlaylist.hide()
+        self.statusbar.showMessage("Playlist oculta", 2000)
+
+        
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
