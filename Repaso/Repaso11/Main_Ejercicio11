@@ -1,0 +1,29 @@
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow,QLabel
+from Ejercicio11 import Ui_MainWindow
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+         # --- Mostrar un mensaje temporal ---
+        from PySide6.QtCore import QTimer
+
+        QTimer.singleShot(0, lambda: self.statusBar().showMessage("LISTO", 5000))
+         # 3 segundos
+     
+        # --- Agregar widgets a la status bar ---
+        # Widget normal
+        label_normal = QLabel("Normal")
+        self.statusBar().addWidget(label_normal)  # Se elimina cuando showMessage aparece
+
+        # Widget permanente
+        label_permanente = QLabel("Permanente")
+        self.statusBar().addPermanentWidget(label_permanente)  # Siempre visible
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
