@@ -1,0 +1,33 @@
+  import sys
+from PySide6.QtWidgets import QApplication, QMainWindow
+from Ejercicio10 import Ui_MainWindow
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+
+        self.actionAbrir.triggered.connect(self.abrir)
+        self.actionGuardar.triggered.connect(self.guardar)
+        self.actionSalir.triggered.connect(self.salir)
+
+    # Funciones de las acciones
+    def abrir(self):
+     
+        print("Abrir archivo")
+
+    def guardar(self):
+       
+        print("Guardar archivo")
+
+    def salir(self):
+        
+        print("Salir de la aplicación")
+        QApplication.quit()
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
