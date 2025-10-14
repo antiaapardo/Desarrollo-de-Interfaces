@@ -1,0 +1,32 @@
+import sys
+from PySide6.QtWidgets import QApplication, QMainWindow,QLabel
+from Ejercicio13 import Ui_MainWindow
+
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+        self.actPlay.triggered.connect(self.play)
+        self.actPause.triggered.connect(self.pause)
+        self.actStop.triggered.connect(self.stop)
+       
+        self.listWidget.itemDoubleClicked.connect(self.double_click)
+
+    def double_click(self, item):
+        self.lblTitulo.setText(f"Reproduciendo {item.text()}")
+        
+    def play(self):
+        self.statusBar().showMessage("Play") 
+
+    def pause(self):
+        self.statusBar().showMessage("Pause") 
+      
+    def stop(self):
+        self.statusBar().showMessage("Stop") 
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
