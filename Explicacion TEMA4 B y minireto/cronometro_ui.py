@@ -14,12 +14,14 @@ class CronometroWidget(QWidget):
         self.label.setAlignment(Qt.AlignCenter)
         self.btn_iniciar = QPushButton("Iniciar")
         self.btn_pausar = QPushButton("Pausar")
+        self.btn_reiniciar = QPushButton("Reiniciar")
 
         # Layout vertical
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         layout.addWidget(self.btn_iniciar)
         layout.addWidget(self.btn_pausar)
+        layout.addWidget(self.btn_reiniciar)
         self.setLayout(layout)
 
         # Creamos un temporizador que actualizará la pantalla cada segundo
@@ -29,6 +31,7 @@ class CronometroWidget(QWidget):
         # Conectamos los botones
         self.btn_iniciar.clicked.connect(self.iniciar)
         self.btn_pausar.clicked.connect(self.pausar)
+        self.btn_reiniciar.clicked.connect(self.reiniciar)
 
     def iniciar(self):
         # Reinicia el cronómetro y empieza a contar
@@ -50,3 +53,9 @@ class CronometroWidget(QWidget):
         # Muestra el tiempo en pantalla
         tiempo = self.crono.getTime().toString("hh:mm:ss")
         self.label.setText(tiempo)
+    def reiniciar(self):
+        # Reinicia el cronómetro y la interfaz
+        self.crono.reiniciar()
+        self.label.setText("00:00:00")
+        self.timer.stop()
+        
