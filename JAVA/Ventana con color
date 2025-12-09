@@ -1,0 +1,39 @@
+import javax.swing.*;
+import java.awt.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+  // Crear ventana
+                JFrame frame = new JFrame("Cambiar Color");
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                // Panel principal (el que cambiará de color)
+                JPanel panel = new JPanel();
+                panel.setBackground(Color.WHITE); // color inicial
+                panel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+
+                // Crear botones
+                JButton btnRojo = new JButton("Rojo");
+                JButton btnVerde = new JButton("Verde");
+                JButton btnAzul = new JButton("Azul");
+
+                // Añadir botones al panel
+                panel.add(btnRojo);
+                panel.add(btnVerde);
+                panel.add(btnAzul);
+
+                // Listeners para los botones
+                btnRojo.addActionListener(e -> panel.setBackground(Color.RED));
+                btnVerde.addActionListener(e -> panel.setBackground(Color.GREEN));
+                btnAzul.addActionListener(e -> panel.setBackground(Color.BLUE));
+
+                // Añadir panel y mostrar ventana
+                frame.add(panel);
+                frame.setSize(400, 200);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        }
+
+
