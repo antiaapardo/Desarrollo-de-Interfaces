@@ -1,0 +1,66 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        // Crear ventana
+        JFrame frame = new JFrame("Mi Primera GUI");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // Panel principal con padding
+        JPanel panel = new JPanel(new GridBagLayout());
+        panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        panel.setBackground(new Color(245, 245, 245));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        // Título
+        JLabel titulo = new JLabel("Primera GUI");
+        titulo.setFont(new Font("Segoe UI", Font.BOLD, 22));
+        titulo.setHorizontalAlignment(SwingConstants.CENTER);
+
+        gbc.gridwidth = 2;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(titulo, gbc);
+
+        // Campo de texto
+        JTextField campo = new JTextField(15);
+        campo.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(campo, gbc);
+
+        // Botón
+        JButton boton = new JButton("Aceptar");
+        boton.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        boton.setBackground(new Color(66, 135, 245));
+        boton.setForeground(Color.WHITE);
+        boton.setFocusPainted(false);
+        boton.setBorder(BorderFactory.createEmptyBorder(8, 16, 8, 16));
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(boton, gbc);
+
+        // Añadir panel y centrar
+        frame.add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+        // Acción del botón
+        boton.addActionListener(e -> {
+            String nombre = campo.getText();
+            if (nombre.isEmpty()) {
+                JOptionPane.showMessageDialog(frame, "El campo está vacío");
+            } else {
+                JOptionPane.showMessageDialog(frame, "Primera GUI: " + nombre);
+            }
+        });
+    }
+}
